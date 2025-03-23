@@ -214,7 +214,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
       )}
 
       <div className="mt-auto">
-        <Separator className={`${isCollapsed ? 'mx-2' : 'mx-3'} mb-3 bg-[#2a2a2b]`} />
+        <Separator className="w-full bg-[#2a2a2b] mb-3" />
         <div className={`flex p-3 ${isCollapsed ? "justify-center" : "justify-end gap-[25px]"}`}>
           {isCollapsed ? (
             <IconButton icon={<BookIcon />} aria-label="Library" />
