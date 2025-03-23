@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { IconButton } from "@/components/ui/IconButton";
 import {
@@ -208,7 +207,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
                 </div>
               ))}
               
-              {/* Fade-out effect at the bottom of the ScrollArea */}
               <div className="h-8 bg-gradient-to-t from-[#212122] to-transparent pointer-events-none absolute bottom-0 left-0 right-0"></div>
             </div>
           </ScrollArea>
@@ -216,7 +214,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
       )}
 
       <div className="mt-auto">
-        <Separator className="mx-3 mb-3 bg-[#2a2a2b]" />
+        <Separator className={`${isCollapsed ? 'mx-2' : 'mx-3'} mb-3 bg-[#2a2a2b]`} />
         <div className={`flex p-3 ${isCollapsed ? "justify-center" : "justify-end gap-[25px]"}`}>
           {isCollapsed ? (
             <IconButton icon={<BookIcon />} aria-label="Library" />
