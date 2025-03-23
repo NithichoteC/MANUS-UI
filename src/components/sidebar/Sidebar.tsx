@@ -174,9 +174,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
             </div>
           </button>
 
-          <div className="flex-1 min-h-0 overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-hidden relative">
+            {/* Gradient fade at the bottom */}
+            <div className="absolute bottom-0 left-0 right-0 h-[60px] bg-gradient-to-t from-[#212122] to-transparent z-10 pointer-events-none"></div>
+            
             <ScrollArea className="h-full pr-2">
-              <div className="flex flex-col gap-2 w-full pb-2">
+              <div className="flex flex-col gap-2 w-full pb-4">
                 {sessionData.map((session) => (
                   <div 
                     key={session.id} 
