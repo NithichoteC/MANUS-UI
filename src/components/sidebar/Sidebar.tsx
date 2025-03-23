@@ -154,7 +154,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
       </div>
 
       {!isCollapsed && (
-        <div className="flex flex-col gap-[9px] p-3">
+        <div className="flex flex-col gap-[9px] p-3 flex-grow">
           <button
             className="flex justify-center items-center bg-[#323233] cursor-pointer p-3 rounded-[10px] hover:bg-[#3a3a3b] transition-colors"
             aria-label="Create new task"
@@ -173,8 +173,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
             </div>
           </button>
 
-          <ScrollArea className="max-h-[calc(100vh-210px)] pr-2 pb-2 overflow-hidden">
-            <div className="flex flex-col gap-2 overflow-visible">
+          <ScrollArea className="flex-grow pr-2 pb-2 overflow-hidden">
+            <div className="flex flex-col gap-2 w-full">
               {sessionData.map((session) => (
                 <div 
                   key={session.id} 
@@ -190,8 +190,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
                         <span className="text-white text-xs">🤖</span>
                       )}
                     </div>
-                    <div className="flex flex-col overflow-hidden">
-                      <div className="flex justify-between">
+                    <div className="flex flex-col overflow-hidden flex-grow">
+                      <div className="flex justify-between items-center">
                         <span className="text-neutral-300 font-medium text-sm truncate max-w-[200px]">
                           {session.title}
                         </span>
@@ -206,8 +206,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
                   </div>
                 </div>
               ))}
-              
-              <div className="h-8 bg-gradient-to-t from-[#212122] to-transparent pointer-events-none absolute bottom-0 left-0 right-0"></div>
             </div>
           </ScrollArea>
         </div>
