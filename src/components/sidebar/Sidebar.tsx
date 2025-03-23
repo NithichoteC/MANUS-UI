@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { IconButton } from "@/components/ui/IconButton";
 import {
@@ -154,7 +155,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
       </div>
 
       {!isCollapsed && (
-        <div className="flex flex-col gap-[9px] p-3">
+        <div className="flex flex-col gap-[9px] p-3 flex-grow relative">
           <button
             className="flex justify-center items-center bg-[#323233] cursor-pointer p-3 rounded-[10px] hover:bg-[#3a3a3b] transition-colors"
             aria-label="Create new task"
@@ -173,8 +174,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
             </div>
           </button>
 
-          <ScrollArea className="max-h-[calc(100vh-210px)] pr-2 pb-2 overflow-hidden">
-            <div className="flex flex-col gap-2 overflow-visible">
+          <ScrollArea className="flex-grow overflow-hidden pr-2 pb-2">
+            <div className="flex flex-col gap-2 relative">
               {sessionData.map((session) => (
                 <div 
                   key={session.id} 
@@ -206,10 +207,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
                   </div>
                 </div>
               ))}
-              
-              <div className="h-8 bg-gradient-to-t from-[#212122] to-transparent pointer-events-none absolute bottom-0 left-0 right-0"></div>
             </div>
           </ScrollArea>
+          {/* Gradient fade that aligns perfectly with the divider */}
+          <div className="h-10 bg-gradient-to-t from-[#212122] to-transparent pointer-events-none absolute bottom-0 left-0 right-0"></div>
         </div>
       )}
 
