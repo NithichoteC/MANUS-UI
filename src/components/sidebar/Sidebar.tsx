@@ -155,7 +155,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
       </div>
 
       {!isCollapsed && (
-        <div className="flex flex-col gap-[9px] p-3 flex-grow relative">
+        <div className="flex flex-col gap-[9px] p-3 flex-1">
           <button
             className="flex justify-center items-center bg-[#323233] cursor-pointer p-3 rounded-[10px] hover:bg-[#3a3a3b] transition-colors"
             aria-label="Create new task"
@@ -174,48 +174,49 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
             </div>
           </button>
 
-          <ScrollArea className="flex-grow overflow-hidden pr-2 pb-2">
-            <div className="flex flex-col gap-2 relative">
-              {sessionData.map((session) => (
-                <div 
-                  key={session.id} 
-                  className="w-full h-auto min-h-[72px] bg-[#212122] hover:bg-[#161618] rounded-[10px] transition-colors cursor-pointer p-3"
-                >
-                  <div className="flex gap-3">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      session.avatarType === "user" ? "bg-[#4e4e4f]" : "bg-[#363537]"
-                    }`}>
-                      {session.avatarType === "user" ? (
-                        <span className="text-white text-xs">👤</span>
-                      ) : (
-                        <span className="text-white text-xs">🤖</span>
-                      )}
-                    </div>
-                    <div className="flex flex-col overflow-hidden">
-                      <div className="flex justify-between">
-                        <span className="text-neutral-300 font-medium text-sm truncate max-w-[200px]">
-                          {session.title}
-                        </span>
-                        <span className="text-neutral-500 text-xs whitespace-nowrap ml-2">
-                          {session.days} days ago
-                        </span>
+          <div className="flex-1 flex flex-col relative">
+            <ScrollArea className="flex-1 pr-2">
+              <div className="flex flex-col gap-2 pb-4">
+                {sessionData.map((session) => (
+                  <div 
+                    key={session.id} 
+                    className="w-full h-auto min-h-[72px] bg-[#212122] hover:bg-[#161618] rounded-[10px] transition-colors cursor-pointer p-3"
+                  >
+                    <div className="flex gap-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                        session.avatarType === "user" ? "bg-[#4e4e4f]" : "bg-[#363537]"
+                      }`}>
+                        {session.avatarType === "user" ? (
+                          <span className="text-white text-xs">👤</span>
+                        ) : (
+                          <span className="text-white text-xs">🤖</span>
+                        )}
                       </div>
-                      <p className="text-neutral-500 text-xs mt-1 truncate">
-                        {session.subtitle}
-                      </p>
+                      <div className="flex flex-col overflow-hidden">
+                        <div className="flex justify-between">
+                          <span className="text-neutral-300 font-medium text-sm truncate max-w-[200px]">
+                            {session.title}
+                          </span>
+                          <span className="text-neutral-500 text-xs whitespace-nowrap ml-2">
+                            {session.days} days ago
+                          </span>
+                        </div>
+                        <p className="text-neutral-500 text-xs mt-1 truncate">
+                          {session.subtitle}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </ScrollArea>
-          {/* Gradient fade that aligns perfectly with the divider */}
-          <div className="h-10 bg-gradient-to-t from-[#212122] to-transparent pointer-events-none absolute bottom-0 left-0 right-0"></div>
+                ))}
+              </div>
+            </ScrollArea>
+            <div className="h-6 bg-gradient-to-t from-[#212122] to-transparent pointer-events-none absolute bottom-0 left-0 right-0"></div>
+          </div>
         </div>
       )}
 
       <div className="mt-auto">
-        <Separator className="w-full bg-[#2a2a2b] mb-3" />
+        <Separator className="w-full bg-[#2a2a2b]" />
         <div className={`flex p-3 ${isCollapsed ? "justify-center" : "justify-end gap-[25px]"}`}>
           {isCollapsed ? (
             <IconButton icon={<BookIcon />} aria-label="Library" />
