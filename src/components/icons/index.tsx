@@ -1,7 +1,8 @@
+
 import React from "react";
 
 export const MenuIcon: React.FC = () => (
-  <div className="flex w-[21px] h-5 items-center gap-2.5 px-2 py-px rounded-sm border-2 border-[#676767]">
+  <div className="flex w-[21px] h-5 items-center gap-2.5 px-2 py-px rounded-sm border-2 border-[#676767] cursor-pointer hover:border-[#888888] transition-colors">
     <div className="w-0.5 h-[17px] bg-[#676767]" />
   </div>
 );
