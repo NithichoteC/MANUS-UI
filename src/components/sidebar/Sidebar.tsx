@@ -10,6 +10,8 @@ import {
 } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
 
 interface SidebarProps {
   isCollapsed: boolean;
@@ -118,7 +120,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
   return (
     <nav 
       className={`h-full bg-[#212122] flex flex-col transition-all duration-300 ease-in-out ${
-        isCollapsed ? "w-20" : "w-[394px] max-md:w-[300px]"
+        isCollapsed ? "w-14" : "w-[394px] max-md:w-[300px]"
       }`}
     >
       <div className={`flex items-center p-3 ${isCollapsed ? "justify-center" : "justify-between"}`}>
@@ -172,51 +174,59 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
             </div>
           </button>
 
-          <div className="flex flex-col gap-2 overflow-y-auto max-h-[calc(100vh-180px)]">
-            {sessionData.map((session) => (
-              <div 
-                key={session.id} 
-                className="w-full h-auto min-h-[72px] bg-[#212122] hover:bg-[#161618] rounded-[10px] transition-colors cursor-pointer p-3"
-              >
-                <div className="flex gap-3">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                    session.avatarType === "user" ? "bg-[#4e4e4f]" : "bg-[#363537]"
-                  }`}>
-                    {session.avatarType === "user" ? (
-                      <span className="text-white text-xs">👤</span>
-                    ) : (
-                      <span className="text-white text-xs">🤖</span>
-                    )}
-                  </div>
-                  <div className="flex flex-col overflow-hidden">
-                    <div className="flex justify-between">
-                      <span className="text-neutral-300 font-medium text-sm truncate max-w-[200px]">
-                        {session.title}
-                      </span>
-                      <span className="text-neutral-500 text-xs whitespace-nowrap ml-2">
-                        {session.days} days ago
-                      </span>
+          <ScrollArea className="max-h-[calc(100vh-210px)] pr-2 pb-2 overflow-hidden">
+            <div className="flex flex-col gap-2 overflow-visible">
+              {sessionData.map((session) => (
+                <div 
+                  key={session.id} 
+                  className="w-full h-auto min-h-[72px] bg-[#212122] hover:bg-[#161618] rounded-[10px] transition-colors cursor-pointer p-3"
+                >
+                  <div className="flex gap-3">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                      session.avatarType === "user" ? "bg-[#4e4e4f]" : "bg-[#363537]"
+                    }`}>
+                      {session.avatarType === "user" ? (
+                        <span className="text-white text-xs">👤</span>
+                      ) : (
+                        <span className="text-white text-xs">🤖</span>
+                      )}
                     </div>
-                    <p className="text-neutral-500 text-xs mt-1 truncate">
-                      {session.subtitle}
-                    </p>
+                    <div className="flex flex-col overflow-hidden">
+                      <div className="flex justify-between">
+                        <span className="text-neutral-300 font-medium text-sm truncate max-w-[200px]">
+                          {session.title}
+                        </span>
+                        <span className="text-neutral-500 text-xs whitespace-nowrap ml-2">
+                          {session.days} days ago
+                        </span>
+                      </div>
+                      <p className="text-neutral-500 text-xs mt-1 truncate">
+                        {session.subtitle}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+              
+              {/* Fade-out effect at the bottom of the ScrollArea */}
+              <div className="h-8 bg-gradient-to-t from-[#212122] to-transparent pointer-events-none absolute bottom-0 left-0 right-0"></div>
+            </div>
+          </ScrollArea>
         </div>
       )}
 
-      <div className={`flex mt-auto p-3 ${isCollapsed ? "justify-center" : "justify-end gap-[25px]"}`}>
-        {isCollapsed ? (
-          <IconButton icon={<BookIcon />} aria-label="Library" />
-        ) : (
-          <>
+      <div className="mt-auto">
+        <Separator className="mx-3 mb-3 bg-[#2a2a2b]" />
+        <div className={`flex p-3 ${isCollapsed ? "justify-center" : "justify-end gap-[25px]"}`}>
+          {isCollapsed ? (
             <IconButton icon={<BookIcon />} aria-label="Library" />
-            <IconButton icon={<SettingsIcon />} aria-label="Settings" />
-          </>
-        )}
+          ) : (
+            <>
+              <IconButton icon={<BookIcon />} aria-label="Library" />
+              <IconButton icon={<SettingsIcon />} aria-label="Settings" />
+            </>
+          )}
+        </div>
       </div>
     </nav>
   );
