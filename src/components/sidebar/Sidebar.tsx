@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { IconButton } from "@/components/ui/IconButton";
 import {
@@ -154,7 +155,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
       </div>
 
       {!isCollapsed && (
-        <div className="flex flex-col gap-[9px] p-3 flex-grow">
+        <div className="flex flex-col gap-[9px] p-3 flex-1 overflow-hidden">
           <button
             className="flex justify-center items-center bg-[#323233] cursor-pointer p-3 rounded-[10px] hover:bg-[#3a3a3b] transition-colors"
             aria-label="Create new task"
@@ -173,41 +174,43 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
             </div>
           </button>
 
-          <ScrollArea className="flex-grow pr-2 pb-2 overflow-hidden">
-            <div className="flex flex-col gap-2 w-full">
-              {sessionData.map((session) => (
-                <div 
-                  key={session.id} 
-                  className="w-full h-auto min-h-[72px] bg-[#212122] hover:bg-[#161618] rounded-[10px] transition-colors cursor-pointer p-3"
-                >
-                  <div className="flex gap-3">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      session.avatarType === "user" ? "bg-[#4e4e4f]" : "bg-[#363537]"
-                    }`}>
-                      {session.avatarType === "user" ? (
-                        <span className="text-white text-xs">👤</span>
-                      ) : (
-                        <span className="text-white text-xs">🤖</span>
-                      )}
-                    </div>
-                    <div className="flex flex-col overflow-hidden flex-grow">
-                      <div className="flex justify-between items-center">
-                        <span className="text-neutral-300 font-medium text-sm truncate max-w-[200px]">
-                          {session.title}
-                        </span>
-                        <span className="text-neutral-500 text-xs whitespace-nowrap ml-2">
-                          {session.days} days ago
-                        </span>
+          <div className="flex-1 min-h-0 overflow-hidden">
+            <ScrollArea className="h-full pr-2">
+              <div className="flex flex-col gap-2 w-full pb-2">
+                {sessionData.map((session) => (
+                  <div 
+                    key={session.id} 
+                    className="w-full h-auto min-h-[72px] bg-[#212122] hover:bg-[#161618] rounded-[10px] transition-colors cursor-pointer p-3"
+                  >
+                    <div className="flex gap-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                        session.avatarType === "user" ? "bg-[#4e4e4f]" : "bg-[#363537]"
+                      }`}>
+                        {session.avatarType === "user" ? (
+                          <span className="text-white text-xs">👤</span>
+                        ) : (
+                          <span className="text-white text-xs">🤖</span>
+                        )}
                       </div>
-                      <p className="text-neutral-500 text-xs mt-1 truncate">
-                        {session.subtitle}
-                      </p>
+                      <div className="flex flex-col overflow-hidden flex-grow">
+                        <div className="flex justify-between items-center">
+                          <span className="text-neutral-300 font-medium text-sm truncate max-w-[200px]">
+                            {session.title}
+                          </span>
+                          <span className="text-neutral-500 text-xs whitespace-nowrap ml-2">
+                            {session.days} days ago
+                          </span>
+                        </div>
+                        <p className="text-neutral-500 text-xs mt-1 truncate">
+                          {session.subtitle}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </ScrollArea>
+                ))}
+              </div>
+            </ScrollArea>
+          </div>
         </div>
       )}
 
