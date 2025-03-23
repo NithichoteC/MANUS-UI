@@ -53,21 +53,25 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
         </button>
 
         {isCollapsed ? (
-          // Session indicators for collapsed state
+          // Session indicators for collapsed state - all the same color
           <div className="flex flex-col gap-2 mt-4">
-            <div className="w-full h-3 bg-[#3A3A3B] rounded-sm" />
-            <div className="w-full h-3 bg-[#343435] rounded-sm" />
-            <div className="w-full h-3 bg-[#2E2E2F] rounded-sm" />
-            <div className="w-full h-3 bg-[#292929] rounded-sm" />
-            <div className="w-full h-3 bg-[#252526] rounded-sm" />
+            {[1, 2, 3, 4, 5].map((_, index) => (
+              <div 
+                key={index} 
+                className="w-full h-3 bg-[#212122] hover:bg-[#161618] rounded-sm transition-colors cursor-pointer" 
+              />
+            ))}
           </div>
         ) : (
-          // Task placeholders for expanded state
-          <>
-            <div className="w-full h-12 bg-[#242425] rounded-[10px]" />
-            <div className="w-full h-12 bg-[#222223] rounded-[10px]" />
-            <div className="w-full h-12 bg-[#202021] rounded-[10px]" />
-          </>
+          // Task placeholders for expanded state - all the same color
+          <div className="flex flex-col gap-2">
+            {[1, 2, 3].map((_, index) => (
+              <div 
+                key={index} 
+                className="w-full h-12 bg-[#212122] hover:bg-[#161618] rounded-[10px] transition-colors cursor-pointer" 
+              />
+            ))}
+          </div>
         )}
       </div>
 
