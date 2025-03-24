@@ -77,7 +77,7 @@ export const TaskProgress: React.FC = () => {
           {isExpanded ? (
             <>
               <div className="mr-4">
-                <ComputerScreen />
+                <ComputerScreen size="normal" />
               </div>
               <DeviceInfo name="Manus" application="Editor" />
             </>
