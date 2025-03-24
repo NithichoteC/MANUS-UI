@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -101,12 +100,7 @@
   }
 }
 
-/* Computer screen animation and layout adjustments */
-.computer-screen-open main {
-  margin-left: -350px;
-  transition: margin-left 0.3s ease-out;
-}
-
+/* Layout adjustments when computer screen is open */
 main {
   transition: margin-left 0.3s ease-out;
 }
