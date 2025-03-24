@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import {
   Dialog,
@@ -155,7 +156,7 @@ export const KnowledgeDialog = () => {
         <IconButton 
           icon={<BookIcon />} 
           aria-label="Knowledge Base"
-          className="hover:bg-sidebar-accent"
+          className="hover:bg-[#1A1A1B]"
         />
       </DialogTrigger>
       <DialogContent className="sm:max-w-[550px] bg-sidebar border-sidebar-border">

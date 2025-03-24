@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import {
   Dialog,
@@ -51,7 +52,7 @@ export const SettingsDialog = () => {
         <IconButton 
           icon={<SettingsIcon />} 
           aria-label="Settings"
-          className="hover:bg-sidebar-accent"
+          className="hover:bg-[#1A1A1B]"
         />
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-sidebar border-sidebar-border">
