@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { IconButton } from "@/components/ui/IconButton";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -48,9 +49,10 @@ export const SettingsDialog = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label="Settings">
-          <SettingsIcon />
-        </Button>
+        <IconButton 
+          icon={<SettingsIcon />} 
+          aria-label="Settings"
+        />
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-sidebar border-sidebar-border">
         <DialogHeader>

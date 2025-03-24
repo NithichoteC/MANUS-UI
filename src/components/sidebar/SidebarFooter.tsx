@@ -16,15 +16,11 @@ export const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed }) => 
       <Separator className="w-full bg-[#2a2a2b]" />
       <div className={`flex px-3 py-2.5 ${isCollapsed ? "justify-center" : "justify-end gap-[16px]"}`}>
         {isCollapsed ? (
-          <IconButton icon={<BookIcon />} aria-label="Knowledge Base" />
+          <KnowledgeDialog />
         ) : (
           <>
-            <IconButton icon={<BookIcon />} aria-label="Knowledge Base">
-              <KnowledgeDialog />
-            </IconButton>
-            <IconButton icon={<SettingsIcon />} aria-label="Settings">
-              <SettingsDialog />
-            </IconButton>
+            <KnowledgeDialog />
+            <SettingsDialog />
           </>
         )}
       </div>
