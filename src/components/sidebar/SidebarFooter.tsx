@@ -1,8 +1,9 @@
 
 import React from "react";
 import { IconButton } from "@/components/ui/IconButton";
-import { BookIcon, SettingsIcon } from "@/components/icons";
+import { BookIcon } from "@/components/icons";
 import { Separator } from "@/components/ui/separator";
+import { SettingsDialog } from "@/components/settings/SettingsDialog";
 
 interface SidebarFooterProps {
   isCollapsed: boolean;
@@ -18,7 +19,7 @@ export const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed }) => 
         ) : (
           <>
             <IconButton icon={<BookIcon />} aria-label="Library" />
-            <IconButton icon={<SettingsIcon />} aria-label="Settings" />
+            <SettingsDialog />
           </>
         )}
       </div>
