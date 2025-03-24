@@ -9,7 +9,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { BookIcon, PlusIcon, ArrowLeftIcon } from "lucide-react";
+import { BookIcon, PlusIcon, ArrowLeftIcon, Pencil, Trash2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
@@ -27,8 +27,8 @@ interface KnowledgeItem {
   enabled: boolean;
 }
 
-// New knowledge form values
-interface NewKnowledgeFormValues {
+// Knowledge form values
+interface KnowledgeFormValues {
   name: string;
   trigger: string;
   content: string;
@@ -36,7 +36,8 @@ interface NewKnowledgeFormValues {
 
 export const KnowledgeDialog = () => {
   const [open, setOpen] = useState(false);
-  const [isAddingKnowledge, setIsAddingKnowledge] = useState(false);
+  const [view, setView] = useState<'list' | 'add' | 'edit'>('list');
+  const [editingItem, setEditingItem] = useState<KnowledgeItem | null>(null);
   const [knowledgeItems, setKnowledgeItems] = useState<KnowledgeItem[]>([
     {
       id: "1",
@@ -56,8 +57,8 @@ export const KnowledgeDialog = () => {
   
   const { toast } = useToast();
   
-  // Setup form for new knowledge
-  const form = useForm<NewKnowledgeFormValues>({
+  // Setup form for adding/editing knowledge
+  const form = useForm<KnowledgeFormValues>({
     defaultValues: {
       name: "",
       trigger: "",
@@ -65,26 +66,65 @@ export const KnowledgeDialog = () => {
     },
   });
 
-  const onSubmit = (data: NewKnowledgeFormValues) => {
-    // Create new knowledge item
-    const newItem: KnowledgeItem = {
-      id: Date.now().toString(),
-      name: data.name,
-      trigger: data.trigger,
-      content: data.content,
-      enabled: true,
-    };
+  const onSubmit = (data: KnowledgeFormValues) => {
+    if (view === 'add') {
+      // Create new knowledge item
+      const newItem: KnowledgeItem = {
+        id: Date.now().toString(),
+        name: data.name,
+        trigger: data.trigger,
+        content: data.content,
+        enabled: true,
+      };
+      
+      // Add to knowledge items
+      setKnowledgeItems([...knowledgeItems, newItem]);
+      
+      toast({
+        title: "Knowledge added",
+        description: "Your knowledge item has been added successfully.",
+      });
+    } else if (view === 'edit' && editingItem) {
+      // Update existing item
+      setKnowledgeItems(
+        knowledgeItems.map(item => 
+          item.id === editingItem.id ? { 
+            ...item, 
+            name: data.name, 
+            trigger: data.trigger, 
+            content: data.content 
+          } : item
+        )
+      );
+      
+      toast({
+        title: "Knowledge updated",
+        description: "Your knowledge item has been updated successfully.",
+      });
+    }
     
-    // Add to knowledge items
-    setKnowledgeItems([...knowledgeItems, newItem]);
-    
-    // Reset form and return to main view
+    // Reset form and return to list view
     form.reset();
-    setIsAddingKnowledge(false);
+    setView('list');
+    setEditingItem(null);
+  };
+
+  const handleEdit = (item: KnowledgeItem) => {
+    setEditingItem(item);
+    form.reset({
+      name: item.name,
+      trigger: item.trigger,
+      content: item.content,
+    });
+    setView('edit');
+  };
+
+  const handleDelete = (id: string) => {
+    setKnowledgeItems(knowledgeItems.filter(item => item.id !== id));
     
     toast({
-      title: "Knowledge added",
-      description: "Your knowledge item has been added successfully.",
+      title: "Knowledge deleted",
+      description: "Your knowledge item has been deleted successfully.",
     });
   };
 
@@ -99,8 +139,21 @@ export const KnowledgeDialog = () => {
   const handleOpenChange = (newOpenState: boolean) => {
     setOpen(newOpenState);
     if (!newOpenState) {
-      // Reset to main view when dialog is closed
-      setIsAddingKnowledge(false);
+      // Reset to list view when dialog is closed
+      setView('list');
+      setEditingItem(null);
+      form.reset();
+    }
+  };
+
+  const getViewTitle = () => {
+    switch (view) {
+      case 'add':
+        return "Add New Knowledge";
+      case 'edit':
+        return "Edit Knowledge";
+      default:
+        return "Knowledge Base";
     }
   };
 
@@ -108,24 +161,33 @@ export const KnowledgeDialog = () => {
     <>
       <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogTrigger asChild>
-          <Button variant="ghost" size="icon" aria-label="Knowledge Base">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            aria-label="Knowledge Base"
+            className="text-[#ACACAC] hover:bg-[#1A1A1B] hover:text-[#ACACAC]"
+          >
             <BookIcon className="h-4 w-4" />
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[550px] bg-sidebar border-sidebar-border">
-          <DialogHeader className="pr-8">
+          <DialogHeader className="pr-12">
             <DialogTitle className="text-sidebar-foreground flex items-center justify-between">
-              {isAddingKnowledge ? (
+              {view !== 'list' ? (
                 <div className="flex items-center">
                   <Button 
                     variant="ghost" 
                     size="sm" 
                     className="mr-2 p-0 h-8 w-8"
-                    onClick={() => setIsAddingKnowledge(false)}
+                    onClick={() => {
+                      setView('list');
+                      setEditingItem(null);
+                      form.reset();
+                    }}
                   >
                     <ArrowLeftIcon className="h-4 w-4 text-sidebar-foreground" />
                   </Button>
-                  <span>Add New Knowledge</span>
+                  <span>{getViewTitle()}</span>
                 </div>
               ) : (
                 <>
@@ -133,14 +195,14 @@ export const KnowledgeDialog = () => {
                   <Button 
                     size="sm" 
                     className="bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90"
-                    onClick={() => setIsAddingKnowledge(true)}
+                    onClick={() => setView('add')}
                   >
                     <PlusIcon className="h-4 w-4 mr-1" /> Add Knowledge
                   </Button>
                 </>
               )}
             </DialogTitle>
-            {!isAddingKnowledge && (
+            {view === 'list' && (
               <DialogDescription className="text-sidebar-foreground/70">
                 Manage AI knowledge for contextual responses
               </DialogDescription>
@@ -148,7 +210,7 @@ export const KnowledgeDialog = () => {
           </DialogHeader>
           
           <div className="space-y-4 mt-2">
-            {isAddingKnowledge ? (
+            {view !== 'list' ? (
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                   <FormField
@@ -207,7 +269,7 @@ export const KnowledgeDialog = () => {
                       type="submit"
                       className="bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90"
                     >
-                      Add Knowledge
+                      {view === 'add' ? 'Add Knowledge' : 'Update Knowledge'}
                     </Button>
                   </div>
                 </form>
@@ -222,20 +284,38 @@ export const KnowledgeDialog = () => {
                   <div className="space-y-3">
                     {knowledgeItems.map((item) => (
                       <div key={item.id} className="flex items-start justify-between p-3 bg-sidebar-accent rounded-md border border-sidebar-border">
-                        <div className="space-y-1">
+                        <div className="space-y-1 flex-1">
                           <h4 className="font-medium text-sidebar-foreground">{item.name}</h4>
-                          <p className="text-xs text-sidebar-foreground/70 max-w-[380px] truncate">
+                          <p className="text-xs text-sidebar-foreground/70 max-w-[350px] truncate">
                             Trigger: {item.trigger}
                           </p>
-                          <p className="text-xs text-sidebar-foreground/70 max-w-[380px] truncate">
+                          <p className="text-xs text-sidebar-foreground/70 max-w-[350px] truncate">
                             {item.content}
                           </p>
                         </div>
-                        <Switch 
-                          checked={item.enabled} 
-                          onCheckedChange={() => toggleKnowledgeStatus(item.id)}
-                          className="ml-2 mt-1"
-                        />
+                        <div className="flex items-center gap-2 ml-2">
+                          <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            className="h-8 w-8 text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-border"
+                            onClick={() => handleEdit(item)}
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </Button>
+                          <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            className="h-8 w-8 text-sidebar-foreground/70 hover:text-destructive hover:bg-sidebar-border"
+                            onClick={() => handleDelete(item.id)}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                          <Switch 
+                            checked={item.enabled} 
+                            onCheckedChange={() => toggleKnowledgeStatus(item.id)}
+                            className="ml-1"
+                          />
+                        </div>
                       </div>
                     ))}
                   </div>
