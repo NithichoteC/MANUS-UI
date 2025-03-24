@@ -35,7 +35,11 @@ export const TaskInput: React.FC = () => {
           variant="circle"
           aria-label="Avatar"
         />
-        <IconButton icon={<AttachmentIcon />} aria-label="Attach file" />
+        <IconButton 
+          icon={<AttachmentIcon />} 
+          variant="circle"
+          aria-label="Attach file" 
+        />
       </div>
 
       <div className="absolute flex items-center space-x-3 right-[30px] bottom-[20px]">
@@ -46,6 +50,7 @@ export const TaskInput: React.FC = () => {
         />
         <IconButton 
           icon={<SendIcon />} 
+          variant="circle"
           type="submit" 
           aria-label="Send task"
         />
