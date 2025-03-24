@@ -10,6 +10,7 @@ export const Layout: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [messages, setMessages] = useState<string[]>([]);
   const [isComputerScreenOpen, setIsComputerScreenOpen] = useState(false);
+  const [currentTaskId, setCurrentTaskId] = useState("1");
   
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -76,7 +77,7 @@ export const Layout: React.FC = () => {
             onComputerScreenToggle={handleToggleComputerScreen}
             isComputerScreenOpen={isComputerScreenOpen}
             taskList={taskList}
-            currentTaskId="1"
+            currentTaskId={currentTaskId}
           />}
           <TaskInput onSendMessage={handleAddMessage} />
         </div>
@@ -85,7 +86,7 @@ export const Layout: React.FC = () => {
         open={isComputerScreenOpen}
         onOpenChange={handleToggleComputerScreen}
         taskList={taskList}
-        currentTaskId="4"
+        currentTaskId={currentTaskId}
       />
     </div>
   );

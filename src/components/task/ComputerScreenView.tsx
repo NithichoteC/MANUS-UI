@@ -89,7 +89,7 @@ export const ComputerScreenView: React.FC<ComputerScreenViewProps> = ({
           </div>
         </div>
         
-        {/* Task progress section */}
+        {/* Task progress section - using the same task list and current task ID as the main view */}
         <div className="bg-[#1D1D1D] p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-[#D9D9D9] text-[15px] font-medium">Task progress</h3>
