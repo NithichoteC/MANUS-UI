@@ -11,7 +11,7 @@ interface CollapsedTaskViewProps {
 export const CollapsedTaskView: React.FC<CollapsedTaskViewProps> = ({ title, status }) => {
   return (
     <div className="flex items-center">
-      <TooltipProvider>
+      <TooltipProvider delayDuration={0}>
         <Tooltip>
           <TooltipTrigger asChild>
             <div className="mr-3">
