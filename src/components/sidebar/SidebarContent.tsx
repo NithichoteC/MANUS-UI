@@ -111,7 +111,7 @@ export const SidebarContent: React.FC<SidebarContentProps> = ({ isCollapsed }) =
         <div className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-[#212122] to-transparent z-10 pointer-events-none"></div>
         
         <ScrollArea className="h-full pr-2">
-          <div className="flex flex-col gap-2 w-full pb-[6px]">
+          <div className="flex flex-col gap-1 w-full pb-[6px]">
             {sessionData.map((session) => (
               <SessionItem key={session.id} session={session} />
             ))}
