@@ -33,9 +33,9 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed, toggl
   };
 
   return (
-    <div className={`flex items-center p-3 ${isCollapsed ? "justify-center h-[58px]" : "justify-between h-[58px]"}`}>
+    <div className={`relative flex items-center p-3 ${isCollapsed ? "justify-center h-[58px]" : "justify-between h-[58px]"}`}>
       {isSearchExpanded ? (
-        <div className="absolute inset-x-0 top-0 z-20 flex items-center bg-[#212122] h-[58px] px-3">
+        <div className="absolute inset-x-0 top-0 z-20 bg-[#212122] flex items-center h-[58px] px-3">
           <div className="relative flex items-center w-full">
             <Input
               ref={searchInputRef}
@@ -47,13 +47,13 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed, toggl
               className="w-full h-10 bg-[#3C3C3D] border-none text-[#565656] pl-8 pr-10 py-1 rounded-md"
             />
             <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
-              <SearchIcon className="w-5 h-5 text-[#565656]" />
+              <SearchIcon className="w-4 h-4 text-[#565656]" />
             </div>
             <button 
               onClick={closeSearch}
               className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#565656] hover:text-white"
             >
-              <X size={18} />
+              <X size={16} />
             </button>
           </div>
         </div>

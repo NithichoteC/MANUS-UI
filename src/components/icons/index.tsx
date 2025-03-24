@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Plus, Book, X, Search as LucideSearch, Settings as LucideSettings } from "lucide-react";
 
@@ -9,7 +8,7 @@ export const MenuIcon: React.FC = () => (
 );
 
 export const SearchIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <LucideSearch className={`w-5 h-5 text-[#ACACAC] ${props.className || ""}`} strokeWidth={1.5} />
+  <LucideSearch className={`w-4 h-4 text-[#ACACAC] ${props.className || ""}`} strokeWidth={1.5} />
 );
 
 export const BookIcon: React.FC = () => (
