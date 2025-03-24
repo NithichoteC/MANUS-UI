@@ -106,7 +106,7 @@ export const SidebarContent: React.FC<SidebarContentProps> = ({ isCollapsed }) =
         </div>
       </button>
 
-      <div className="flex-1 min-h-0 overflow-hidden relative">
+      <div className="flex-1 min-h-0 overflow-hidden relative mt-[6px]">
         {/* Gradient fade at the bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-[#212122] to-transparent z-10 pointer-events-none"></div>
         
