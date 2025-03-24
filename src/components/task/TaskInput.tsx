@@ -25,7 +25,7 @@ export const TaskInput: React.FC<TaskInputProps> = ({ onSendMessage }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-[800px] h-[138px] bg-[#363537] relative rounded-[43px] max-md:w-[600px] max-sm:w-[95%]"
+      className="w-[900px] h-[138px] bg-[#363537] relative rounded-[43px] max-md:w-[600px] max-sm:w-[95%]"
     >
       <input
         type="text"

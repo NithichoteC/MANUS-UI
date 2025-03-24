@@ -8,7 +8,7 @@ interface UserMessageProps {
 export const UserMessage: React.FC<UserMessageProps> = ({ message }) => {
   return (
     <div className="flex justify-end mb-4">
-      <div className="bg-[#363537] text-[#D9D9D9] rounded-[20px] py-4 px-6 max-w-[85%]">
+      <div className="bg-[#363537] text-[#D9D9D9] rounded-[20px] py-4 px-6 max-w-[90%]">
         <p className="text-[15px]">{message}</p>
       </div>
     </div>
