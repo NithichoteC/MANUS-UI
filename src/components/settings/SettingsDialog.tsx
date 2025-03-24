@@ -52,10 +52,10 @@ export const SettingsDialog = () => {
           <SettingsIcon />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] bg-sidebar border-sidebar-border">
         <DialogHeader>
-          <DialogTitle>Settings</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className="text-sidebar-foreground">Settings</DialogTitle>
+          <DialogDescription className="text-sidebar-foreground/70">
             Configure your API keys for various services.
           </DialogDescription>
         </DialogHeader>
@@ -67,12 +67,13 @@ export const SettingsDialog = () => {
               name="openAIKey"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>OpenAI API Key</FormLabel>
+                  <FormLabel className="text-sidebar-foreground">OpenAI API Key</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="sk-..."
                       type="password"
                       autoComplete="off"
+                      className="bg-sidebar-accent text-sidebar-foreground border-sidebar-border"
                       {...field}
                     />
                   </FormControl>
@@ -85,12 +86,13 @@ export const SettingsDialog = () => {
               name="openRouterKey"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>OpenRouter API Key</FormLabel>
+                  <FormLabel className="text-sidebar-foreground">OpenRouter API Key</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="sk-or-..."
                       type="password"
                       autoComplete="off"
+                      className="bg-sidebar-accent text-sidebar-foreground border-sidebar-border"
                       {...field}
                     />
                   </FormControl>
@@ -99,7 +101,7 @@ export const SettingsDialog = () => {
             />
             
             <div className="flex justify-end pt-4">
-              <Button type="submit">Save Settings</Button>
+              <Button type="submit" className="bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90">Save Settings</Button>
             </div>
           </form>
         </Form>
