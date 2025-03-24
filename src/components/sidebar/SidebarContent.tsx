@@ -87,7 +87,7 @@ export const SidebarContent: React.FC<SidebarContentProps> = ({ isCollapsed }) =
   }
 
   return (
-    <div className="flex flex-col gap-[9px] p-3 flex-1 overflow-hidden">
+    <div className="flex flex-col gap-[6px] px-3 py-2 flex-1 overflow-hidden">
       <button
         className="flex justify-center items-center bg-[#323233] cursor-pointer p-3 rounded-[10px] hover:bg-[#3a3a3b] transition-colors"
         aria-label="Create new task"
