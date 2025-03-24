@@ -1,3 +1,4 @@
+
 import React from "react";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +18,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
   return (
     <button
       className={cn(
-        "flex items-center justify-center",
+        "flex items-center justify-center p-1",
         variant === "circle" && "w-[37px] h-[37px] rounded-full",
         className,
       )}

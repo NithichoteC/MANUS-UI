@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { IconButton } from "@/components/ui/IconButton";
 import { MenuIcon, SearchIcon } from "@/components/icons";
 import { Input } from "@/components/ui/input";
@@ -12,6 +12,7 @@ interface SidebarHeaderProps {
 export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed, toggleSidebar }) => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const searchContainerRef = useRef<HTMLDivElement>(null);
 
   const expandSearch = () => {
     setIsSearchExpanded(true);
@@ -27,6 +28,18 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed, toggl
     }
   };
 
+  const handleMouseEnter = () => {
+    if (!isSearchExpanded) {
+      expandSearch();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!searchValue) {
+      setIsSearchExpanded(false);
+    }
+  };
+
   return (
     <div className={`flex items-center p-3 ${isCollapsed ? "justify-center h-[58px]" : "justify-between h-[58px]"}`}>
       <IconButton 
@@ -37,7 +50,12 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed, toggl
       />
       
       {!isCollapsed && (
-        <div className="relative flex items-center">
+        <div 
+          ref={searchContainerRef}
+          className="relative flex items-center" 
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           {isSearchExpanded ? (
             <Input
               type="text"
@@ -45,8 +63,8 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed, toggl
               value={searchValue}
               onChange={handleSearchChange}
               onBlur={handleSearchBlur}
-              autoFocus
-              className="w-[200px] h-8 bg-[#323233] border-none text-neutral-300 pl-3 pr-8 py-1 rounded-md mr-[-34px]"
+              autoFocus={searchValue === ""}
+              className="w-[200px] h-8 bg-[#323233] border-none text-neutral-300 pl-3 pr-8 py-1 rounded-md transform -translate-x-2 transition-transform"
             />
           ) : null}
           <IconButton 
