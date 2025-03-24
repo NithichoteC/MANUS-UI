@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { IconButton } from "@/components/ui/IconButton";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -71,13 +72,34 @@ export const TaskProgress: React.FC = () => {
   };
 
   const progressText = `${taskList.findIndex(task => task.id === currentTask.id) + 1} / ${taskList.length}`;
+  
+  // Add a class to the body when computer screen is open to shift the main content
+  useEffect(() => {
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+      if (isComputerScreenOpen) {
+        rootElement.classList.add('computer-screen-open');
+      } else {
+        rootElement.classList.remove('computer-screen-open');
+      }
+    }
+    
+    return () => {
+      if (rootElement) {
+        rootElement.classList.remove('computer-screen-open');
+      }
+    };
+  }, [isComputerScreenOpen]);
 
   return (
     <>
       <Collapsible 
         open={isExpanded} 
         onOpenChange={setIsExpanded}
-        className="w-[900px] rounded-[20px] overflow-hidden bg-[#272728] border border-[#363537] max-md:w-[600px] max-sm:w-[95%]"
+        className={cn(
+          "w-[900px] rounded-[20px] overflow-hidden bg-[#272728] border border-[#363537] max-md:w-[600px] max-sm:w-[95%]",
+          isComputerScreenOpen && "ml-[-175px]"
+        )}
       >
         <div className={cn(
           "flex items-center justify-between p-4 bg-[#272728]",
@@ -148,7 +170,7 @@ export const TaskProgress: React.FC = () => {
           { id: "1", title: "Conduct comprehensive research on subscription-based business models", isCompleted: true },
           { id: "2", title: "Analyze market trends and potential business opportunities", isCompleted: true },
           { id: "3", title: "Identify top subscription business opportunities with AI agent integration", isCompleted: true },
-          { id: "4", title: "Research and evaluate required APIs and integration possibilities", status: "Manus has stopped", isCompleted: false },
+          { id: "4", title: "Research and evaluate required APIs and integration possibilities", status: "I have stopped", isCompleted: false },
           { id: "5", title: "Design web application architecture", isCompleted: false },
           { id: "6", title: "Develop frontend components of the web application", isCompleted: false },
           { id: "7", title: "Implement backend functionality with API integration", isCompleted: false },

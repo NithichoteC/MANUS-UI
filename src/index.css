@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,34 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Computer screen animation and layout adjustments */
+.computer-screen-open main {
+  margin-left: -350px;
+  transition: margin-left 0.3s ease-out;
+}
+
+main {
+  transition: margin-left 0.3s ease-out;
+}
+
+/* Animation for computer screen slide-in */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
   }
 }
