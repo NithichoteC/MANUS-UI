@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import {
   Dialog,
@@ -284,5 +285,33 @@ export const KnowledgeDialog = () => {
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className
-
+                          className="h-8 w-8"
+                          onClick={() => handleEdit(item)}
+                        >
+                          <Pencil className="h-4 w-4 text-sidebar-foreground/70" />
+                        </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="icon" 
+                          className="h-8 w-8"
+                          onClick={() => handleDelete(item.id)}
+                        >
+                          <Trash2 className="h-4 w-4 text-sidebar-foreground/70" />
+                        </Button>
+                        <Switch 
+                          checked={item.enabled}
+                          onCheckedChange={() => toggleKnowledgeStatus(item.id)}
+                          className="data-[state=checked]:bg-sidebar-primary"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
