@@ -4,6 +4,7 @@ import { IconButton } from "@/components/ui/IconButton";
 import { Separator } from "@/components/ui/separator";
 import { SettingsDialog } from "@/components/settings/SettingsDialog";
 import { KnowledgeDialog } from "@/components/knowledge/KnowledgeDialog";
+import { BookIcon } from "lucide-react";
 
 interface SidebarFooterProps {
   isCollapsed: boolean;

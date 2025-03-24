@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import {
   Dialog,
@@ -153,8 +154,9 @@ export const KnowledgeDialog = () => {
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <IconButton 
-          icon={<BookIcon />} 
+          icon={<BookIcon className="text-sidebar-foreground" />} 
           aria-label="Knowledge Base"
+          className="hover:bg-sidebar-accent"
         />
       </DialogTrigger>
       <DialogContent className="sm:max-w-[550px] bg-sidebar border-sidebar-border">

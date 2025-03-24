@@ -12,7 +12,7 @@ import { IconButton } from "@/components/ui/IconButton";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { SettingsIcon } from "@/components/icons";
+import { SettingsIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useToast } from "@/hooks/use-toast";
 
@@ -50,8 +50,9 @@ export const SettingsDialog = () => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <IconButton 
-          icon={<SettingsIcon />} 
+          icon={<SettingsIcon className="text-sidebar-foreground" />} 
           aria-label="Settings"
+          className="hover:bg-sidebar-accent"
         />
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-sidebar border-sidebar-border">
