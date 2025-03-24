@@ -14,7 +14,7 @@ export const Layout: React.FC = () => {
   return (
     <div className="flex h-screen w-screen bg-[#272728]">
       <Sidebar isCollapsed={isCollapsed} toggleSidebar={toggleSidebar} />
-      <main className="flex-1 flex flex-col items-center justify-end pb-[22px] transition-all duration-300 ease-in-out">
+      <main className="flex-1 flex flex-col items-center justify-end pb-[22px] overflow-y-auto transition-all duration-300 ease-in-out">
         <TaskProgress />
         <TaskInput />
       </main>
