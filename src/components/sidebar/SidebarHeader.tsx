@@ -40,18 +40,18 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed, toggl
             <Input
               ref={searchInputRef}
               type="text"
-              placeholder="Search tasks..."
+              placeholder="Search task..."
               value={searchValue}
               onChange={handleSearchChange}
               autoFocus
-              className="w-full h-10 bg-[#3C3C3D] border-0 outline-none shadow-none text-[#5D5D5D] pl-8 pr-10 py-1 rounded-md focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="w-full h-10 bg-[#3C3C3D] border-0 outline-none shadow-none text-[#5A5A5A] pl-8 pr-8 py-1 rounded-md focus-visible:ring-0 focus-visible:ring-offset-0"
             />
             <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
-              <SearchIcon className="w-4 h-4 text-[#5D5D5D]" />
+              <SearchIcon className="w-4 h-4 text-[#5A5A5A]" />
             </div>
             <button 
               onClick={closeSearch}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5D5D5D] hover:text-white"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5A5A5A] hover:text-white"
             >
               <X size={16} />
             </button>
