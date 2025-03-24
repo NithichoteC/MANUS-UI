@@ -22,7 +22,7 @@ export const Layout: React.FC = () => {
       <Sidebar isCollapsed={isCollapsed} toggleSidebar={toggleSidebar} />
       <main className="flex-1 flex flex-col h-full overflow-hidden">
         <div className="flex-1 flex flex-col overflow-y-auto p-4">
-          <div className="w-full max-w-[800px] mx-auto flex-1 flex flex-col">
+          <div className="w-full max-w-[800px] mx-auto flex-1 flex flex-col pt-6">
             {messages.map((message, index) => (
               <UserMessage key={index} message={message} />
             ))}
