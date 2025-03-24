@@ -27,7 +27,7 @@ export const TaskInput: React.FC = () => {
         className="absolute text-[#5F5F5F] text-[15px] left-[30px] top-[23px] bg-transparent border-none outline-none w-[calc(100%-60px)]"
       />
 
-      <div className="absolute flex items-center gap-2.5 left-[30px] bottom-5">
+      <div className="absolute flex items-center space-x-3 left-[30px] bottom-[20px]">
         <IconButton
           icon={
             <div className="w-[37px] h-[37px] rounded-full bg-[#363537] border border-[#414142]" />
@@ -38,13 +38,17 @@ export const TaskInput: React.FC = () => {
         <IconButton icon={<AttachmentIcon />} aria-label="Attach file" />
       </div>
 
-      <div className="absolute flex items-center gap-2.5 right-[30px] bottom-5">
+      <div className="absolute flex items-center space-x-3 right-[30px] bottom-[20px]">
         <IconButton
           icon={<div className="w-[37px] h-[37px] rounded-full bg-[#4E4E4F]" />}
           variant="circle"
           aria-label="Action"
         />
-        <IconButton icon={<SendIcon />} type="submit" aria-label="Send task" />
+        <IconButton 
+          icon={<SendIcon />} 
+          type="submit" 
+          aria-label="Send task"
+        />
       </div>
     </form>
   );
