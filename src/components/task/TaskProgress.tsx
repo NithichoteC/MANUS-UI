@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { IconButton } from "@/components/ui/IconButton";
@@ -9,7 +8,6 @@ import { DeviceInfo } from "./DeviceInfo";
 import { UsageMetrics } from "./UsageMetrics";
 import { TaskItem } from "./TaskItem";
 import { CollapsedTaskView } from "./CollapsedTaskView";
-import { ComputerScreenView } from "./ComputerScreenView";
 
 interface TaskItem {
   id: string;
@@ -78,10 +76,7 @@ export const TaskProgress: React.FC = () => {
           {isExpanded ? (
             <>
               <div className="mr-4">
-                <ComputerScreenView
-                  taskList={taskList}
-                  currentTask={currentTask}
-                />
+                <ComputerScreen size="normal" />
               </div>
               <DeviceInfo name="Manus" application="Editor" />
             </>
