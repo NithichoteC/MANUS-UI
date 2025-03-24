@@ -123,7 +123,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) 
         isCollapsed ? "w-14" : "w-[394px] max-md:w-[300px]"
       }`}
     >
-      <div className={`flex items-center p-3 ${isCollapsed ? "justify-center" : "justify-between"}`}>
+      <div className={`flex items-center p-3 ${isCollapsed ? "justify-center h-[58px]" : "justify-between h-[58px]"}`}>
         <IconButton 
           icon={<MenuIcon />} 
           aria-label="Menu" 
