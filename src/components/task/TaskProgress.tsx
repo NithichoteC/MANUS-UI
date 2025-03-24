@@ -73,11 +73,6 @@ export const TaskProgress: React.FC = () => {
         </div>
         <div className="flex items-center">
           <IconButton 
-            icon={<MonitorSmartphone className="w-4 h-4 text-[#ACACAC]" />} 
-            className="mr-2 bg-transparent hover:bg-[#1A1A1B]"
-            aria-label="View screen" 
-          />
-          <IconButton 
             icon={<ChevronDown className={`w-4 h-4 text-[#ACACAC] transform ${isExpanded ? 'rotate-180' : 'rotate-0'}`} />} 
             onClick={toggleExpand}
             className="bg-transparent hover:bg-[#1A1A1B]"
