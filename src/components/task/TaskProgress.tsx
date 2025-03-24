@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import { IconButton } from "@/components/ui/IconButton";
@@ -65,7 +66,7 @@ export const TaskProgress: React.FC = () => {
     <Collapsible 
       open={isExpanded} 
       onOpenChange={setIsExpanded}
-      className="w-[720px] rounded-[20px] overflow-hidden bg-[#272728] border border-[#363537] mb-4 max-md:w-[560px] max-sm:w-[95%]"
+      className="w-[800px] rounded-[20px] overflow-hidden bg-[#272728] border border-[#363537] max-md:w-[600px] max-sm:w-[95%]"
     >
       {/* Header section - always visible */}
       <div className={cn(
