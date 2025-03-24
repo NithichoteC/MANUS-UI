@@ -16,7 +16,7 @@ interface SessionItemProps {
 export const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
   return (
     <div 
-      className="w-full h-auto min-h-[72px] bg-[#212122] hover:bg-[#161618] rounded-[10px] transition-colors cursor-pointer p-2"
+      className="w-full h-auto min-h-[72px] bg-[#212122] hover:bg-[#161618] rounded-[10px] transition-colors cursor-pointer px-2 py-2"
     >
       <div className="flex gap-3">
         <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
