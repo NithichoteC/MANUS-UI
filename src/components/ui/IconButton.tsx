@@ -24,7 +24,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
       )}
       {...props}
     >
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center w-full h-full">
         {icon}
       </div>
     </button>
