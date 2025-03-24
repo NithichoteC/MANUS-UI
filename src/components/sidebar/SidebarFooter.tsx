@@ -14,7 +14,7 @@ export const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed }) => 
   return (
     <div className="mt-auto">
       <Separator className="w-full bg-[#2a2a2b] mb-2" />
-      <div className={`flex p-2 ${isCollapsed ? "justify-center" : "justify-end gap-[25px]"}`}>
+      <div className={`flex p-2 pb-2 ${isCollapsed ? "justify-center" : "justify-end gap-[20px]"}`}>
         {isCollapsed ? (
           <IconButton icon={<BookIcon />} aria-label="Knowledge Base" />
         ) : (
