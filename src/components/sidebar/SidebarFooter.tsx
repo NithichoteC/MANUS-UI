@@ -4,7 +4,6 @@ import { IconButton } from "@/components/ui/IconButton";
 import { Separator } from "@/components/ui/separator";
 import { SettingsDialog } from "@/components/settings/SettingsDialog";
 import { KnowledgeDialog } from "@/components/knowledge/KnowledgeDialog";
-import { BookIcon, SettingsIcon } from "@/components/icons";
 
 interface SidebarFooterProps {
   isCollapsed: boolean;
