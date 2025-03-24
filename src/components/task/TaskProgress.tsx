@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { ChevronDown, ChevronUp, Clock, DollarSign, MonitorSmartphone } from "lucide-react";
+import { ChevronDown, ChevronUp, Clock, DollarSign, ExternalLink, MonitorSmartphone } from "lucide-react";
 import { IconButton } from "@/components/ui/IconButton";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
@@ -67,35 +67,57 @@ export const TaskProgress: React.FC = () => {
       <div className="flex items-center justify-between p-4 h-[60px] bg-[#272728]">
         <div className="flex items-center">
           <div className="mr-4">
-            <div className="w-[42px] h-[42px] rounded-md bg-[#1D1D1D] flex items-center justify-center">
-              <MonitorSmartphone className="w-5 h-5 text-[#6A6A6A]" />
-            </div>
-          </div>
-          <div>
             {isExpanded ? (
-              <>
-                <span className="text-[#D9D9D9] text-[17px]">Manus's computer</span>
-                <div className="flex items-center mt-1">
-                  <div className="flex items-center">
-                    <div className="w-4 h-4 rounded-md bg-[#2C2C2C] flex items-center justify-center mr-2">
-                      <span className="text-[#9E9E9E] text-[10px]">⌘</span>
+              <div className="w-[140px] h-[80px] rounded-md bg-[#1D1D1D] overflow-hidden relative">
+                <div className="absolute top-0 left-0 w-full h-full p-1.5">
+                  <div className="w-full h-full rounded-sm relative bg-[#161616] p-2">
+                    <div className="absolute top-1 left-1.5 flex space-x-1">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#272727]"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#272727]"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#272727]"></div>
                     </div>
-                    <span className="text-[#9E9E9E] text-[12px]">Manus is using</span>
-                    <span className="text-[#D9D9D9] text-[12px] ml-1">Editor</span>
+                    <div className="mt-2 text-left">
+                      <div className="text-[6px] text-[#9747FF] font-mono">// implementation_examples.md</div>
+                      <div className="flex mt-0.5">
+                        <div className="text-[6px] text-[#A970FF] font-mono mr-1"># Practical</div>
+                        <div className="text-[6px] text-[#64B5F6] font-mono mr-1">Examples</div>
+                        <div className="text-[6px] text-white font-mono opacity-50 mr-1">•</div>
+                        <div className="text-[6px] text-[#F06292] font-mono mr-1">Patterns</div>
+                        <div className="text-[6px] text-white font-mono opacity-50 mr-1">•</div>
+                        <div className="text-[6px] text-[#FFD54F] font-mono">Guidelines</div>
+                      </div>
+                      <div className="mt-1 text-[5px] text-[#AAAAAA] font-mono leading-tight">
+                        Today, we'll implement a more efficient <br />
+                        version of the text-input logic. Replacing a <br />
+                        series of expensive regex with optimized <br />
+                        character-by-character checks. This new <br />
+                        approach is 30% faster while maintaining <br />
+                        correctness of the previously implemented... 
+                      </div>
+                      <div className="mt-1 text-[5px] text-[#777777] font-mono">
+                        ■ More knowledge implemented here...
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </>
+              </div>
             ) : (
-              <div className="flex flex-col">
-                <div className="flex items-center">
-                  <div className="w-5 h-5 rounded-full border border-[#FFC700] flex items-center justify-center mr-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#FFC700]"></div>
-                  </div>
-                  <span className="text-[#D9D9D9] text-[15px]">{currentTask.title}</span>
-                </div>
-                <span className="text-[#9E9E9E] text-[13px] ml-7">{currentTask.status}</span>
+              <div className="w-[42px] h-[42px] rounded-md bg-[#1D1D1D] flex items-center justify-center">
+                <MonitorSmartphone className="w-5 h-5 text-[#6A6A6A]" />
               </div>
             )}
+          </div>
+          <div>
+            <span className="text-[#D9D9D9] text-[17px]">Manus's computer</span>
+            <div className="flex items-center mt-1">
+              <div className="flex items-center">
+                <div className="w-6 h-6 rounded-md bg-[#2C2C2C] flex items-center justify-center mr-2">
+                  <span className="text-[#9E9E9E] text-[12px]">⌘</span>
+                </div>
+                <span className="text-[#9E9E9E] text-[12px]">Manus is using</span>
+                <span className="text-[#D9D9D9] text-[12px] ml-1">Editor</span>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -115,6 +137,13 @@ export const TaskProgress: React.FC = () => {
                 <DollarSign className="w-3 h-3 mr-1" />
                 <span>{apiCost}</span>
               </div>
+
+              {/* External link */}
+              <IconButton 
+                icon={<ExternalLink className="w-4 h-4 text-[#ACACAC]" />}
+                className="bg-transparent hover:bg-[#1A1A1B] mr-1"
+                aria-label="Open external link"
+              />
             </>
           )}
           
@@ -138,7 +167,7 @@ export const TaskProgress: React.FC = () => {
         <div className="bg-[#1D1D1D] p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-[#D9D9D9] text-[15px] font-medium">Task progress</h3>
-            {/* Removed duplicate progress text here */}
+            {/* Progress is already shown in the header, no need to duplicate it here */}
           </div>
 
           {/* Active task */}
