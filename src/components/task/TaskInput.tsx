@@ -43,9 +43,11 @@ export const TaskInput: React.FC = () => {
         <IconButton 
           icon={<SendIcon color={hasText ? "#292929" : "#5F5F5F"} />} 
           variant="circle"
-          className={`${hasText ? "bg-[#D7D7D7]" : "bg-[#4E4E4F]"} border ${hasText ? "border-[#D7D7D7]" : "border-[#4E4E4F]"}`}
+          className={`${hasText ? "bg-[#D7D7D7] hover:bg-[#c2c2c2]" : "bg-[#4E4E4F]"} border ${hasText ? "border-[#D7D7D7] hover:border-[#c2c2c2]" : "border-[#4E4E4F]"}`}
           type="submit" 
           aria-label="Send task"
+          disabled={!hasText}
+          disableHover={!hasText}
         />
       </div>
     </form>
