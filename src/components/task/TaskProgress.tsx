@@ -49,7 +49,7 @@ export const TaskProgress: React.FC = () => {
 
   // Mock data for time and cost tracking
   const timeSpent = "12m 34s";
-  const apiCost = "0.42"; // Removed the dollar sign from here
+  const apiCost = "0.42";
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -64,11 +64,14 @@ export const TaskProgress: React.FC = () => {
       className="w-[644px] rounded-[20px] overflow-hidden bg-[#272728] border border-[#363537] mb-4 max-md:w-[500px] max-sm:w-[90%]"
     >
       {/* Header section - always visible */}
-      <div className="flex items-center justify-between p-4 h-[60px] bg-[#272728]">
+      <div className={cn(
+        "flex items-center justify-between p-4 bg-[#272728]",
+        isExpanded ? "h-auto py-5" : "h-[60px]"
+      )}>
         <div className="flex items-center">
           <div className="mr-4">
             {isExpanded ? (
-              <div className="w-[140px] h-[80px] rounded-md bg-[#1D1D1D] overflow-hidden relative">
+              <div className="w-[210px] h-[130px] rounded-md bg-[#1D1D1D] overflow-hidden relative">
                 <div className="absolute top-0 left-0 w-full h-full p-1.5">
                   <div className="w-full h-full rounded-sm relative bg-[#161616] p-2">
                     <div className="absolute top-1 left-1.5 flex space-x-1">
@@ -93,6 +96,14 @@ export const TaskProgress: React.FC = () => {
                         character-by-character checks. This new <br />
                         approach is 30% faster while maintaining <br />
                         correctness of the previously implemented... 
+                      </div>
+                      <div className="mt-3 text-[5px] text-[#AAAAAA] font-mono leading-tight">
+                        The implementation involves several key steps:<br />
+                        1. Parse input string character by character<br />
+                        2. Track state with a simple FSM approach<br />
+                        3. Apply validation rules incrementally<br />
+                        4. Optimize critical paths for performance<br />
+                        5. Add comprehensive test coverage
                       </div>
                       <div className="mt-1 text-[5px] text-[#777777] font-mono">
                         ■ More knowledge implemented here...
