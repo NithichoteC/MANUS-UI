@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { IconButton } from "@/components/ui/IconButton";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
@@ -93,16 +92,7 @@ export const TaskProgress: React.FC = () => {
         <div className="flex items-center">
           {/* Only show metrics when expanded */}
           {isExpanded && (
-            <>
-              <UsageMetrics timeSpent={timeSpent} apiCost={apiCost} />
-              
-              {/* External link */}
-              <IconButton 
-                icon={<ExternalLink className="w-4 h-4 text-[#ACACAC]" />}
-                className="bg-transparent hover:bg-[#1A1A1B] mr-1"
-                aria-label="Open external link"
-              />
-            </>
+            <UsageMetrics timeSpent={timeSpent} apiCost={apiCost} />
           )}
           
           {/* Progress indicator - always visible */}
