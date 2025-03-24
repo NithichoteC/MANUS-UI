@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { ChevronDown, Clock, MonitorSmartphone } from "lucide-react";
 import { IconButton } from "@/components/ui/IconButton";
@@ -73,7 +74,7 @@ export const TaskProgress: React.FC = () => {
         </div>
         <div className="flex items-center">
           <IconButton 
-            icon={<ChevronDown className={`w-4 h-4 text-[#ACACAC] transform ${isExpanded ? 'rotate-180' : 'rotate-0'}`} />} 
+            icon={<ChevronDown className={`w-4 h-4 text-[#ACACAC] transform ${isExpanded ? 'rotate-0' : 'rotate-180'}`} />} 
             onClick={toggleExpand}
             className="bg-transparent hover:bg-[#1A1A1B]"
             aria-label="Toggle expand" 
