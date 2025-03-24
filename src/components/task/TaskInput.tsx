@@ -27,7 +27,7 @@ export const TaskInput: React.FC = () => {
         value={task}
         onChange={(e) => setTask(e.target.value)}
         placeholder="Give me a task to work on..."
-        className="absolute text-[#575757] text-[15px] left-[30px] top-[23px] bg-transparent border-none outline-none w-[calc(100%-60px)] placeholder:text-[#575757]"
+        className="absolute text-[#D9D9D9] text-[15px] left-[30px] top-[23px] bg-transparent border-none outline-none w-[calc(100%-60px)] placeholder:text-[#575757]"
       />
 
       <div className="absolute left-[30px] bottom-[20px]">
