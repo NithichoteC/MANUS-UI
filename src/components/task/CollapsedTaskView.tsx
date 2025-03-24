@@ -15,7 +15,7 @@ export const CollapsedTaskView: React.FC<CollapsedTaskViewProps> = ({ title, sta
         <Tooltip>
           <TooltipTrigger asChild>
             <div className="mr-3">
-              <ComputerScreen />
+              <ComputerScreen size="small" />
             </div>
           </TooltipTrigger>
           <TooltipContent side="top">
