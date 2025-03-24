@@ -72,13 +72,6 @@ export const ComputerScreen: React.FC<ComputerScreenProps> = ({ size = "normal" 
           <Maximize2 size={10} className="text-white" />
         </div>
       )}
-      
-      {/* Black overlay with text that appears on hover */}
-      <div className="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-        <span className="text-white text-xs font-medium">
-          {size === "normal" ? "View Manus's computer" : "View computer screen"}
-        </span>
-      </div>
     </div>
   );
 };
