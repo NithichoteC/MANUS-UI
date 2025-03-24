@@ -38,6 +38,7 @@ export const TaskInput: React.FC = () => {
         <IconButton 
           icon={<AttachmentIcon />} 
           variant="circle"
+          className="bg-[#363537] border border-[#414142]"
           aria-label="Attach file" 
         />
       </div>
@@ -51,6 +52,7 @@ export const TaskInput: React.FC = () => {
         <IconButton 
           icon={<SendIcon />} 
           variant="circle"
+          className="bg-[#363537] border border-[#414142]"
           type="submit" 
           aria-label="Send task"
         />
