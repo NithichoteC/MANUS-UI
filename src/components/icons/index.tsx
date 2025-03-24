@@ -8,7 +8,7 @@ export const MenuIcon: React.FC = () => (
 );
 
 export const SearchIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <LucideSearch className={`w-4 h-4 text-[#ACACAC] ${props.className || ""}`} strokeWidth={1.5} />
+  <LucideSearch className={`text-[#ACACAC] ${props.className || ""}`} strokeWidth={1.5} />
 );
 
 export const BookIcon: React.FC = () => (
