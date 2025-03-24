@@ -1,5 +1,5 @@
-
 import React from "react";
+import { Plus } from "lucide-react";
 
 export const MenuIcon: React.FC = () => (
   <div className="flex w-[21px] h-5 items-center gap-2.5 px-2 py-px rounded-sm border-2 border-[#676767] cursor-pointer hover:border-[#888888] transition-colors">
@@ -116,8 +116,5 @@ export const SendIcon: React.FC = () => (
 );
 
 export const PlusIcon: React.FC = () => (
-  <div className="w-[11px] h-[11px] relative">
-    <div className="w-[3px] h-[11px] bg-[#D9D9D9] absolute" />
-    <div className="w-[11px] h-[3px] bg-[#D9D9D9] absolute" />
-  </div>
+  <Plus className="w-[11px] h-[11px] text-[#D9D9D9]" strokeWidth={3} />
 );
