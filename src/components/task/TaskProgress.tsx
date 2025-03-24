@@ -1,7 +1,9 @@
 
 import React, { useState } from "react";
-import { ChevronDown, Clock, MonitorSmartphone } from "lucide-react";
+import { ChevronDown, ChevronUp, Clock, DollarSign, MonitorSmartphone } from "lucide-react";
 import { IconButton } from "@/components/ui/IconButton";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 
 interface TaskItem {
   id: string;
@@ -45,13 +47,23 @@ export const TaskProgress: React.FC = () => {
     }
   ]);
 
+  // Mock data for time and cost tracking
+  const timeSpent = "12m 34s";
+  const apiCost = "$0.42";
+
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   };
 
+  const progressText = `${taskList.findIndex(task => task.id === currentTask.id) + 1} / ${taskList.length}`;
+
   return (
-    <div className="w-[644px] rounded-[20px] overflow-hidden bg-[#272728] border border-[#363537] mb-4 max-md:w-[500px] max-sm:w-[90%]">
-      {/* Header section */}
+    <Collapsible 
+      open={isExpanded} 
+      onOpenChange={setIsExpanded}
+      className="w-[644px] rounded-[20px] overflow-hidden bg-[#272728] border border-[#363537] mb-4 max-md:w-[500px] max-sm:w-[90%]"
+    >
+      {/* Header section - always visible */}
       <div className="flex items-center justify-between p-4 h-[60px] bg-[#272728]">
         <div className="flex items-center">
           <div className="mr-4">
@@ -60,34 +72,68 @@ export const TaskProgress: React.FC = () => {
             </div>
           </div>
           <div>
-            <span className="text-[#D9D9D9] text-[17px]">Manus's computer</span>
-            <div className="flex items-center mt-1">
-              <div className="flex items-center">
-                <div className="w-4 h-4 rounded-md bg-[#2C2C2C] flex items-center justify-center mr-2">
-                  <span className="text-[#9E9E9E] text-[10px]">⌘</span>
+            {isExpanded ? (
+              <>
+                <span className="text-[#D9D9D9] text-[17px]">Manus's computer</span>
+                <div className="flex items-center mt-1">
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 rounded-md bg-[#2C2C2C] flex items-center justify-center mr-2">
+                      <span className="text-[#9E9E9E] text-[10px]">⌘</span>
+                    </div>
+                    <span className="text-[#9E9E9E] text-[12px]">Manus is using</span>
+                    <span className="text-[#D9D9D9] text-[12px] ml-1">Editor</span>
+                  </div>
                 </div>
-                <span className="text-[#9E9E9E] text-[12px]">Manus is using</span>
-                <span className="text-[#D9D9D9] text-[12px] ml-1">Editor</span>
+              </>
+            ) : (
+              <div className="flex flex-col">
+                <div className="flex items-center">
+                  <div className="w-5 h-5 rounded-full border border-[#FFC700] flex items-center justify-center mr-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#FFC700]"></div>
+                  </div>
+                  <span className="text-[#D9D9D9] text-[15px]">{currentTask.title}</span>
+                </div>
+                <span className="text-[#9E9E9E] text-[13px] ml-7">{currentTask.status}</span>
               </div>
-            </div>
+            )}
           </div>
         </div>
+        
+        {/* Usage metrics and toggle button */}
         <div className="flex items-center">
-          <IconButton 
-            icon={<ChevronDown className={`w-4 h-4 text-[#ACACAC] transform ${isExpanded ? 'rotate-0' : 'rotate-180'}`} />} 
-            onClick={toggleExpand}
-            className="bg-transparent hover:bg-[#1A1A1B]"
-            aria-label="Toggle expand" 
-          />
+          {/* Time spent */}
+          <div className="flex items-center mr-3 text-[#9E9E9E] text-xs">
+            <Clock className="w-3 h-3 mr-1" />
+            <span>{timeSpent}</span>
+          </div>
+          
+          {/* API cost */}
+          <div className="flex items-center mr-3 text-[#9E9E9E] text-xs">
+            <DollarSign className="w-3 h-3 mr-1" />
+            <span>{apiCost}</span>
+          </div>
+          
+          {/* Progress indicator */}
+          <span className="text-[#9E9E9E] text-xs mr-3">{progressText}</span>
+          
+          {/* Expand/Collapse button */}
+          <CollapsibleTrigger asChild>
+            <IconButton 
+              icon={isExpanded ? <ChevronDown className="w-4 h-4 text-[#ACACAC]" /> : <ChevronUp className="w-4 h-4 text-[#ACACAC]" />}
+              onClick={toggleExpand}
+              className="bg-transparent hover:bg-[#1A1A1B]"
+              aria-label={isExpanded ? "Collapse task progress" : "Expand task progress"} 
+            />
+          </CollapsibleTrigger>
         </div>
       </div>
 
-      {/* Task progress section */}
-      {isExpanded && (
+      {/* Task progress section - visible only when expanded */}
+      <CollapsibleContent>
         <div className="bg-[#1D1D1D] p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-[#D9D9D9] text-[15px] font-medium">Task progress</h3>
-            <span className="text-[#9E9E9E] text-xs">1 / 5</span>
+            <span className="text-[#9E9E9E] text-xs">{progressText}</span>
           </div>
 
           {/* Active task */}
@@ -119,7 +165,7 @@ export const TaskProgress: React.FC = () => {
             </div>
           ))}
         </div>
-      )}
-    </div>
+      </CollapsibleContent>
+    </Collapsible>
   );
 };
