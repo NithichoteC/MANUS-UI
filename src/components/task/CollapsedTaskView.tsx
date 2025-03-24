@@ -6,15 +6,20 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 interface CollapsedTaskViewProps {
   title: string;
   status: string;
+  onComputerScreenClick: () => void;
 }
 
-export const CollapsedTaskView: React.FC<CollapsedTaskViewProps> = ({ title, status }) => {
+export const CollapsedTaskView: React.FC<CollapsedTaskViewProps> = ({ 
+  title, 
+  status,
+  onComputerScreenClick
+}) => {
   return (
     <div className="flex items-center">
       <TooltipProvider delayDuration={0}>
         <Tooltip>
           <TooltipTrigger asChild>
-            <div className="mr-3">
+            <div className="mr-3 cursor-pointer" onClick={onComputerScreenClick}>
               <ComputerScreen size="small" />
             </div>
           </TooltipTrigger>

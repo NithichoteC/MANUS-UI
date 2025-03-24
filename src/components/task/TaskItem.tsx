@@ -1,14 +1,20 @@
 
 import React from "react";
-import { Clock } from "lucide-react";
+import { Clock, CheckCircle } from "lucide-react";
 
 interface TaskItemProps {
   title: string;
   status?: string;
   isActive?: boolean;
+  isCompleted?: boolean;
 }
 
-export const TaskItem: React.FC<TaskItemProps> = ({ title, status, isActive = false }) => {
+export const TaskItem: React.FC<TaskItemProps> = ({ 
+  title, 
+  status, 
+  isActive = false,
+  isCompleted = false
+}) => {
   return (
     <div className="mb-4">
       <div className="flex items-start">
@@ -17,6 +23,8 @@ export const TaskItem: React.FC<TaskItemProps> = ({ title, status, isActive = fa
             <div className="w-5 h-5 rounded-full border border-[#FFC700] flex items-center justify-center">
               <div className="w-1.5 h-1.5 rounded-full bg-[#FFC700]"></div>
             </div>
+          ) : isCompleted ? (
+            <CheckCircle className="w-5 h-5 text-[#4CAF50]" />
           ) : (
             <Clock className="w-5 h-5 text-[#5A5A5A]" />
           )}
