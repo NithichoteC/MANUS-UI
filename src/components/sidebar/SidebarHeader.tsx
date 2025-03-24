@@ -35,7 +35,7 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed, toggl
   return (
     <div className={`relative flex items-center px-3 py-2.5 ${isCollapsed ? "justify-center h-[58px]" : "justify-between h-[58px]"}`}>
       {isSearchExpanded ? (
-        <div className="absolute inset-x-0 top-0 z-20 bg-[#212122] flex items-center h-[58px] px-3 pb-2">
+        <div className="absolute inset-x-0 top-0 z-20 bg-[#212122] flex items-center h-[58px] px-3 pt-2">
           <div className="relative flex items-center w-full">
             <Input
               ref={searchInputRef}
