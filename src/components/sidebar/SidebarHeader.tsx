@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import { IconButton } from "@/components/ui/IconButton";
 import { MenuIcon, SearchIcon } from "@/components/icons";
 import { Input } from "@/components/ui/input";
+import { X } from "lucide-react";
 
 interface SidebarHeaderProps {
   isCollapsed: boolean;
@@ -12,68 +13,68 @@ interface SidebarHeaderProps {
 export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed, toggleSidebar }) => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const searchContainerRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const expandSearch = () => {
     setIsSearchExpanded(true);
+    // Focus the input after it's rendered
+    setTimeout(() => {
+      searchInputRef.current?.focus();
+    }, 0);
+  };
+
+  const closeSearch = () => {
+    setIsSearchExpanded(false);
+    setSearchValue("");
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
 
-  const handleSearchBlur = () => {
-    if (!searchValue) {
-      setIsSearchExpanded(false);
-    }
-  };
-
-  const handleMouseEnter = () => {
-    if (!isSearchExpanded) {
-      expandSearch();
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (!searchValue) {
-      setIsSearchExpanded(false);
-    }
-  };
-
   return (
     <div className={`flex items-center p-3 ${isCollapsed ? "justify-center h-[58px]" : "justify-between h-[58px]"}`}>
-      <IconButton 
-        icon={<MenuIcon />} 
-        aria-label="Menu" 
-        onClick={toggleSidebar}
-        className="cursor-pointer"
-      />
-      
-      {!isCollapsed && (
-        <div 
-          ref={searchContainerRef}
-          className="relative flex items-center" 
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          {isSearchExpanded ? (
+      {isSearchExpanded ? (
+        <div className="absolute inset-x-0 top-0 z-20 flex items-center bg-[#212122] h-[58px] px-3">
+          <div className="relative flex items-center w-full">
             <Input
+              ref={searchInputRef}
               type="text"
-              placeholder="Search..."
+              placeholder="Search tasks..."
               value={searchValue}
               onChange={handleSearchChange}
-              onBlur={handleSearchBlur}
-              autoFocus={searchValue === ""}
-              className="w-[200px] h-8 bg-[#323233] border-none text-neutral-300 pl-3 pr-8 py-1 rounded-md transform -translate-x-2 transition-transform"
+              autoFocus
+              className="w-full h-10 bg-[#1A1A1B] border-none text-neutral-300 pl-10 pr-10 py-1 rounded-md"
             />
-          ) : null}
-          <IconButton 
-            icon={<SearchIcon />} 
-            aria-label="Search" 
-            onClick={expandSearch}
-            className={`${isSearchExpanded ? "relative z-10" : ""}`}
-          />
+            <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
+              <SearchIcon />
+            </div>
+            <button 
+              onClick={closeSearch}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-white"
+            >
+              <X size={20} />
+            </button>
+          </div>
         </div>
+      ) : (
+        <>
+          <IconButton 
+            icon={<MenuIcon />} 
+            aria-label="Menu" 
+            onClick={toggleSidebar}
+            className="cursor-pointer"
+          />
+          
+          {!isCollapsed && (
+            <IconButton 
+              icon={<SearchIcon />} 
+              aria-label="Search" 
+              onClick={expandSearch}
+              className="cursor-pointer"
+            />
+          )}
+        </>
       )}
     </div>
   );

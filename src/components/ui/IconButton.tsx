@@ -18,7 +18,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
   return (
     <button
       className={cn(
-        "flex items-center justify-center p-1",
+        "flex items-center justify-center p-1 hover:bg-[#1A1A1B] rounded-md transition-colors",
         variant === "circle" && "w-[37px] h-[37px] rounded-full",
         className,
       )}
