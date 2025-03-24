@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -102,7 +103,7 @@
 
 /* Layout adjustments when computer screen is open */
 main {
-  transition: margin-left 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 /* Animation for computer screen slide-in */
@@ -122,4 +123,12 @@ main {
   to {
     transform: translateX(100%);
   }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out forwards;
+}
+
+.animate-slide-out-right {
+  animation: slide-out-right 0.3s ease-out forwards;
 }

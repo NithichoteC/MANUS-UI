@@ -29,8 +29,11 @@ export const ComputerScreenView: React.FC<ComputerScreenViewProps> = ({
 
   return (
     <div 
-      className={`fixed top-0 right-0 h-full w-[450px] md:w-[550px] lg:w-[700px] bg-[#272728] border-l border-[#363537] z-50 transition-all duration-300 rounded-l-[20px] 
-      ${open ? 'translate-x-0' : 'translate-x-full'} overflow-hidden flex flex-col`}
+      className="fixed top-0 right-0 h-full w-[450px] md:w-[550px] lg:w-[700px] bg-[#272728] border-l border-[#363537] z-20 
+      rounded-l-[20px] overflow-hidden flex flex-col animate-slide-in-right"
+      style={{
+        boxShadow: "-4px 0px 15px rgba(0, 0, 0, 0.1)"
+      }}
     >
       <div className="flex flex-col h-full">
         {/* Header */}

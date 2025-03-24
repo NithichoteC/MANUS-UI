@@ -46,11 +46,13 @@ export const TaskProgress: React.FC<TaskProgressProps> = ({
 
   const progressText = `${taskList.findIndex(task => task.id === currentTask.id) + 1} / ${taskList.length}`;
 
+  if (isComputerScreenOpen) return null;
+
   return (
     <Collapsible 
       open={isExpanded} 
       onOpenChange={setIsExpanded}
-      className="w-[900px] rounded-[20px] overflow-hidden bg-[#272728] border border-[#363537] max-md:w-[600px] max-sm:w-[95%]"
+      className="w-[900px] rounded-[20px] overflow-hidden bg-[#272728] border border-[#363537] max-md:w-[600px] max-sm:w-[95%] transition-all duration-300"
     >
       <div className={cn(
         "flex items-center justify-between p-4 bg-[#272728]",

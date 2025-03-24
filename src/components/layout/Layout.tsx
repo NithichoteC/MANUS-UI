@@ -61,8 +61,8 @@ export const Layout: React.FC = () => {
     <div className="flex h-screen w-screen bg-[#272728]">
       <Sidebar isCollapsed={isCollapsed} toggleSidebar={toggleSidebar} />
       <main 
-        className={`flex-1 flex flex-col h-full overflow-hidden transition-all duration-300 
-        ${isComputerScreenOpen ? 'ml-[-175px]' : ''}`}
+        className={`flex-1 flex flex-col h-full overflow-hidden transition-all duration-300 ease-out
+        ${isComputerScreenOpen ? 'mr-[700px]' : ''}`}
       >
         <div className="flex-1 flex flex-col overflow-y-auto p-4">
           <div className="w-full max-w-[900px] mx-auto flex-1 flex flex-col pt-6 transition-all duration-300">
