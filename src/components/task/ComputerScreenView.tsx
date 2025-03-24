@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Minimize2, ChevronDown, ChevronUp } from "lucide-react";
 import { TaskItem } from "./TaskItem";
@@ -59,7 +58,7 @@ export const ComputerScreenView: React.FC<ComputerScreenViewProps> = ({
               </div>
             </div>
             
-            {/* Browser content */}
+            {/* Browser content - keeping the same dimensions */}
             <div className="flex-1 bg-[#1D1D1D] overflow-y-auto">
               <div className="p-4">
                 <div className="w-full h-10 flex items-center justify-center bg-[#272728] rounded-t-md">
@@ -93,13 +92,13 @@ export const ComputerScreenView: React.FC<ComputerScreenViewProps> = ({
               </div>
             </div>
             
-            {/* Search content */}
+            {/* Search content - filling the entire area */}
             <div className="flex-1 bg-[#1D1D1D] overflow-y-auto">
-              <div className="p-4">
+              <div className="p-4 h-full">
                 <div className="w-full h-10 flex items-center justify-center bg-[#272728] rounded-t-md">
                   <span className="text-[#9E9E9E] text-xs">Search</span>
                 </div>
-                <div className="bg-[#1a1a1a] w-full h-[400px] overflow-y-auto text-[#D9D9D9]">
+                <div className="bg-[#1a1a1a] w-full h-[calc(100%-40px)] overflow-y-auto text-[#D9D9D9]">
                   {/* Search results list */}
                   <div className="border-b border-[#2c2c2c] p-4">
                     <div className="flex items-center mb-2">
@@ -151,13 +150,13 @@ export const ComputerScreenView: React.FC<ComputerScreenViewProps> = ({
               </div>
             </div>
             
-            {/* Terminal/Editor content */}
+            {/* Terminal/Editor content - filling the entire area */}
             <div className="flex-1 bg-[#1D1D1D] overflow-y-auto">
-              <div className="p-4">
+              <div className="p-4 h-full">
                 <div className="w-full h-10 flex items-center justify-center bg-[#272728] rounded-t-md">
                   <span className="text-[#9E9E9E] text-xs">business_opportunities.md</span>
                 </div>
-                <div className="bg-[#1a1a1a] w-full h-[400px] overflow-y-auto p-4 font-mono text-sm">
+                <div className="bg-[#1a1a1a] w-full h-[calc(100%-40px)] overflow-y-auto p-4 font-mono text-sm">
                   <div className="text-[#C792EA] mb-2"># Top Subscription Business Opportunities</div>
                   
                   <div className="text-[#D9D9D9] mb-4">
@@ -209,46 +208,39 @@ export const ComputerScreenView: React.FC<ComputerScreenViewProps> = ({
               </div>
             </div>
             
-            {/* Calculator content */}
+            {/* Calculator content - simplified and filling the entire area */}
             <div className="flex-1 bg-[#1D1D1D] overflow-y-auto">
-              <div className="p-4">
+              <div className="p-4 h-full">
                 <div className="w-full h-10 flex items-center justify-center bg-[#272728] rounded-t-md">
                   <span className="text-[#9E9E9E] text-xs">Calculator</span>
                 </div>
-                <div className="bg-[#1a1a1a] w-full h-[400px] overflow-y-auto p-4">
+                <div className="bg-[#1a1a1a] w-full h-[calc(100%-40px)] overflow-y-auto p-4">
+                  {/* Formula section */}
                   <div className="bg-[#272728] p-4 rounded-md mb-4">
-                    <div className="text-right text-[#D9D9D9] text-xl mb-2">$12,580.00</div>
+                    <div className="text-[#9E9E9E] text-xs mb-1">Formula</div>
+                    <div className="text-[#D9D9D9] font-mono">
+                      MRR = customers × avg_revenue<br />
+                      MRR = 629 × $20.00
+                    </div>
+                  </div>
+                  
+                  {/* Calculation section */}
+                  <div className="bg-[#272728] p-4 rounded-md mb-4">
+                    <div className="text-[#9E9E9E] text-xs mb-1">Calculation</div>
+                    <div className="text-[#D9D9D9] font-mono">
+                      629 × $20.00 = $12,580.00<br />
+                      Annual: $12,580.00 × 12 = $150,960.00<br />
+                      After churn (5.2%): $150,960.00 × 0.948 = $143,110.08
+                    </div>
+                  </div>
+                  
+                  {/* Result section */}
+                  <div className="bg-[#272728] p-4 rounded-md">
+                    <div className="text-[#9E9E9E] text-xs mb-1">Result</div>
+                    <div className="text-right text-[#D9D9D9] text-xl font-bold">$12,580.00</div>
                     <div className="text-right text-[#9E9E9E] text-xs">Monthly Recurring Revenue</div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="bg-[#272728] p-3 rounded-md">
-                      <div className="text-[#9E9E9E] text-xs mb-1">Customers</div>
-                      <div className="text-[#D9D9D9]">629</div>
-                    </div>
-                    <div className="bg-[#272728] p-3 rounded-md">
-                      <div className="text-[#9E9E9E] text-xs mb-1">Avg. Revenue</div>
-                      <div className="text-[#D9D9D9]">$20.00</div>
-                    </div>
-                    <div className="bg-[#272728] p-3 rounded-md">
-                      <div className="text-[#9E9E9E] text-xs mb-1">Churn Rate</div>
-                      <div className="text-[#D9D9D9]">5.2%</div>
-                    </div>
-                    <div className="bg-[#272728] p-3 rounded-md">
-                      <div className="text-[#9E9E9E] text-xs mb-1">CAC</div>
-                      <div className="text-[#D9D9D9]">$42.00</div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-[#272728] p-3 rounded-md mb-4">
-                    <div className="text-[#9E9E9E] text-xs mb-2">Projected Annual Revenue</div>
-                    <div className="h-8 bg-[#1D1D1D] rounded-md overflow-hidden">
-                      <div className="h-full bg-[#4285F4] w-[65%]"></div>
-                    </div>
-                    <div className="flex justify-between mt-1">
-                      <div className="text-[#9E9E9E] text-xs">$0</div>
-                      <div className="text-[#D9D9D9] text-xs">$150,960</div>
-                    </div>
+                    <div className="mt-2 text-right text-[#D9D9D9] text-lg font-medium">$143,110.08</div>
+                    <div className="text-right text-[#9E9E9E] text-xs">Projected Annual Revenue (After Churn)</div>
                   </div>
                 </div>
               </div>
