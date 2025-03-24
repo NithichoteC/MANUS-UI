@@ -18,8 +18,12 @@ export const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed }) => 
           <IconButton icon={<KnowledgeDialog />} aria-label="Knowledge Base" />
         ) : (
           <>
-            <KnowledgeDialog />
-            <SettingsDialog />
+            <div className="hover:bg-[#1A1A1B] rounded-md transition-colors">
+              <KnowledgeDialog />
+            </div>
+            <div className="hover:bg-[#1A1A1B] rounded-md transition-colors">
+              <SettingsDialog />
+            </div>
           </>
         )}
       </div>
