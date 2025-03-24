@@ -59,7 +59,6 @@ export const TaskProgress: React.FC = () => {
     }
   ]);
 
-  // Mock data for time and cost tracking
   const timeSpent = "12m 34s";
   const apiCost = "0.42";
 
@@ -80,7 +79,6 @@ export const TaskProgress: React.FC = () => {
         onOpenChange={setIsExpanded}
         className="w-[900px] rounded-[20px] overflow-hidden bg-[#272728] border border-[#363537] max-md:w-[600px] max-sm:w-[95%]"
       >
-        {/* Header section - always visible */}
         <div className={cn(
           "flex items-center justify-between p-4 bg-[#272728]",
           isExpanded ? "h-auto py-5" : "h-[60px]"
@@ -102,17 +100,13 @@ export const TaskProgress: React.FC = () => {
             )}
           </div>
           
-          {/* Usage metrics and toggle button */}
           <div className="flex items-center">
-            {/* Only show metrics when expanded */}
             {isExpanded && (
               <UsageMetrics timeSpent={timeSpent} apiCost={apiCost} />
             )}
             
-            {/* Progress indicator - always visible */}
             <span className="text-[#9E9E9E] text-xs mr-3">{progressText}</span>
             
-            {/* Expand/Collapse button */}
             <CollapsibleTrigger asChild>
               <IconButton 
                 icon={isExpanded ? <ChevronDown className="w-4 h-4 text-[#ACACAC]" /> : <ChevronUp className="w-4 h-4 text-[#ACACAC]" />}
@@ -124,21 +118,18 @@ export const TaskProgress: React.FC = () => {
           </div>
         </div>
 
-        {/* Task progress section - visible only when expanded */}
         <CollapsibleContent>
           <div className="bg-[#1D1D1D] p-5">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-[#D9D9D9] text-[15px] font-medium">Task progress</h3>
             </div>
 
-            {/* Active task */}
             <TaskItem 
               title={currentTask.title}
               status={currentTask.status}
               isActive={true}
             />
 
-            {/* Other tasks */}
             {taskList.slice(1).map((task) => (
               <TaskItem 
                 key={task.id}
@@ -150,7 +141,6 @@ export const TaskProgress: React.FC = () => {
         </CollapsibleContent>
       </Collapsible>
 
-      {/* Computer Screen Slide-in Panel */}
       <ComputerScreenView 
         open={isComputerScreenOpen}
         onOpenChange={setIsComputerScreenOpen}
