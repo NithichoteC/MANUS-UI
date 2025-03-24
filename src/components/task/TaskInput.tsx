@@ -14,6 +14,9 @@ export const TaskInput: React.FC = () => {
     }
   };
 
+  // Determine if the input has text
+  const hasText = task.trim().length > 0;
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -38,9 +41,9 @@ export const TaskInput: React.FC = () => {
 
       <div className="absolute right-[30px] bottom-[20px]">
         <IconButton 
-          icon={<SendIcon />} 
+          icon={<SendIcon color={hasText ? "#292929" : "#5F5F5F"} />} 
           variant="circle"
-          className="bg-[#363537] border border-[#414142]"
+          className={`${hasText ? "bg-[#D7D7D7]" : "bg-[#4E4E4F]"} border ${hasText ? "border-[#D7D7D7]" : "border-[#4E4E4F]"}`}
           type="submit" 
           aria-label="Send task"
         />

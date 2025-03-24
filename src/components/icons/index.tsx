@@ -24,8 +24,8 @@ export const AttachmentIcon: React.FC = () => (
   <Paperclip className="w-4 h-4 text-[#ACACAC]" strokeWidth={2} />
 );
 
-export const SendIcon: React.FC = () => (
-  <Send className="w-4 h-4 text-[#ACACAC]" strokeWidth={2} />
+export const SendIcon: React.FC<{ color?: string }> = ({ color = "#ACACAC" }) => (
+  <Send className="w-4 h-4" style={{ color }} strokeWidth={2} />
 );
 
 export const PlusIcon: React.FC = () => (
