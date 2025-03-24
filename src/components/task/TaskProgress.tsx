@@ -101,19 +101,24 @@ export const TaskProgress: React.FC = () => {
         
         {/* Usage metrics and toggle button */}
         <div className="flex items-center">
-          {/* Time spent */}
-          <div className="flex items-center mr-3 text-[#9E9E9E] text-xs">
-            <Clock className="w-3 h-3 mr-1" />
-            <span>{timeSpent}</span>
-          </div>
+          {/* Only show metrics when expanded */}
+          {isExpanded && (
+            <>
+              {/* Time spent */}
+              <div className="flex items-center mr-3 text-[#9E9E9E] text-xs">
+                <Clock className="w-3 h-3 mr-1" />
+                <span>{timeSpent}</span>
+              </div>
+              
+              {/* API cost */}
+              <div className="flex items-center mr-3 text-[#9E9E9E] text-xs">
+                <DollarSign className="w-3 h-3 mr-1" />
+                <span>{apiCost}</span>
+              </div>
+            </>
+          )}
           
-          {/* API cost */}
-          <div className="flex items-center mr-3 text-[#9E9E9E] text-xs">
-            <DollarSign className="w-3 h-3 mr-1" />
-            <span>{apiCost}</span>
-          </div>
-          
-          {/* Progress indicator */}
+          {/* Progress indicator - always visible */}
           <span className="text-[#9E9E9E] text-xs mr-3">{progressText}</span>
           
           {/* Expand/Collapse button */}
@@ -133,7 +138,7 @@ export const TaskProgress: React.FC = () => {
         <div className="bg-[#1D1D1D] p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-[#D9D9D9] text-[15px] font-medium">Task progress</h3>
-            <span className="text-[#9E9E9E] text-xs">{progressText}</span>
+            {/* Removed duplicate progress text here */}
           </div>
 
           {/* Active task */}
