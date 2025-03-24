@@ -16,7 +16,7 @@ interface SessionItemProps {
 export const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
   return (
     <div 
-      className="w-full h-auto min-h-[72px] bg-[#212122] hover:bg-[#161618] rounded-[10px] transition-colors cursor-pointer px-2 py-2"
+      className="w-full bg-[#212122] hover:bg-[#161618] rounded-[10px] transition-colors cursor-pointer px-3 py-2.5"
     >
       <div className="flex gap-3">
         <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
@@ -37,7 +37,7 @@ export const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
               {session.days} days ago
             </span>
           </div>
-          <p className="text-neutral-500 text-xs mt-1 truncate">
+          <p className="text-neutral-500 text-xs mt-0.5 truncate">
             {session.subtitle}
           </p>
         </div>
