@@ -49,7 +49,7 @@ export const TaskProgress: React.FC = () => {
 
   // Mock data for time and cost tracking
   const timeSpent = "12m 34s";
-  const apiCost = "$0.42";
+  const apiCost = "0.42"; // Removed the dollar sign from here
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
