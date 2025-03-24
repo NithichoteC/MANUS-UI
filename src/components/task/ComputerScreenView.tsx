@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { X, Maximize2, Minimize2, ChevronDown, ChevronUp } from "lucide-react";
+import { Minimize2, ChevronDown, ChevronUp } from "lucide-react";
 import { TaskItem } from "./TaskItem";
 import { IconButton } from "@/components/ui/IconButton";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -46,22 +46,12 @@ export const ComputerScreenView: React.FC<ComputerScreenViewProps> = ({
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="p-4 flex items-center justify-between bg-[#272728] border-b border-[#363537]">
-            <h2 className="text-[#D9D9D9] text-[17px]">Computer screen</h2>
-            <div className="flex items-center space-x-2">
+            <h2 className="text-[#D9D9D9] text-[17px] font-bold">Computer screen</h2>
+            <div className="flex items-center">
               <IconButton 
                 icon={<Minimize2 className="w-4 h-4 text-[#6A6A6A]" />} 
                 className="bg-transparent hover:bg-[#1A1A1B]"
                 aria-label="Minimize"
-              />
-              <IconButton 
-                icon={<Maximize2 className="w-4 h-4 text-[#6A6A6A]" />} 
-                className="bg-transparent hover:bg-[#1A1A1B]"
-                aria-label="Maximize"
-              />
-              <IconButton 
-                icon={<X className="w-4 h-4 text-[#6A6A6A]" />} 
-                className="bg-transparent hover:bg-[#1A1A1B]"
-                aria-label="Close"
                 onClick={() => onOpenChange(false)}
               />
             </div>
