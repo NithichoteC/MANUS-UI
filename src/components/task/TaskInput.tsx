@@ -29,9 +29,7 @@ export const TaskInput: React.FC = () => {
 
       <div className="absolute flex items-center space-x-3 left-[30px] bottom-[20px]">
         <IconButton
-          icon={
-            <div className="w-[37px] h-[37px] rounded-full bg-[#363537] border border-[#414142]" />
-          }
+          icon={<div className="w-full h-full rounded-full bg-[#363537] border border-[#414142]" />}
           variant="circle"
           aria-label="Avatar"
         />
@@ -45,7 +43,7 @@ export const TaskInput: React.FC = () => {
 
       <div className="absolute flex items-center space-x-3 right-[30px] bottom-[20px]">
         <IconButton
-          icon={<div className="w-[37px] h-[37px] rounded-full bg-[#4E4E4F]" />}
+          icon={<div className="w-full h-full rounded-full bg-[#4E4E4F]" />}
           variant="circle"
           aria-label="Action"
         />
