@@ -61,7 +61,7 @@ export const TaskProgress: React.FC = () => {
     <Collapsible 
       open={isExpanded} 
       onOpenChange={setIsExpanded}
-      className="w-[644px] rounded-[20px] overflow-hidden bg-[#272728] border border-[#363537] mb-4 max-md:w-[500px] max-sm:w-[90%]"
+      className="w-[720px] rounded-[20px] overflow-hidden bg-[#272728] border border-[#363537] mb-4 max-md:w-[560px] max-sm:w-[95%]"
     >
       {/* Header section - always visible */}
       <div className={cn(
@@ -71,7 +71,7 @@ export const TaskProgress: React.FC = () => {
         <div className="flex items-center">
           <div className="mr-4">
             {isExpanded ? (
-              <div className="w-[210px] h-[130px] rounded-md bg-[#1D1D1D] overflow-hidden relative">
+              <div className="w-[180px] h-[120px] rounded-md bg-[#1D1D1D] overflow-hidden relative">
                 <div className="absolute top-0 left-0 w-full h-full p-1.5">
                   <div className="w-full h-full rounded-sm relative bg-[#161616] p-2">
                     <div className="absolute top-1 left-1.5 flex space-x-1">

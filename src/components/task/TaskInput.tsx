@@ -20,7 +20,7 @@ export const TaskInput: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-[644px] h-[138px] bg-[#363537] relative rounded-[43px] max-md:w-[500px] max-sm:w-[90%]"
+      className="w-[720px] h-[138px] bg-[#363537] relative rounded-[43px] max-md:w-[560px] max-sm:w-[95%]"
     >
       <input
         type="text"
